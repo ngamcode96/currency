@@ -22,10 +22,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // Routes pour l'administrateur
-Route::post('admin/auth/register', [AuthController::class, 'register']);
-Route::post('admin/auth/login', [AuthController::class, 'login']);
+
 Route::apiResource('admin/currencies', CurrencyController::class)->middleware('auth:sanctum');
 Route::apiResource('admin/pairs', PairController::class)->middleware('auth:sanctum');
+Route::post('admin/auth/register', [AuthController::class, 'register']);
+Route::post('admin/auth/login', [AuthController::class, 'login']);
 
 
 // Route pour faire une conversion
